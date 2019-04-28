@@ -1,7 +1,13 @@
 class GameState {
   boolean goal;
-  
+  boolean ballCaught;  
   // drawing game board
+  
+  GameState () {
+    ballCaught = false;
+  
+  } 
+  
   
   void drawGameBoard () {
     fill(#0FAA44);
@@ -43,17 +49,22 @@ class GameState {
   
   
   void crashDetective () {
-    float ballRX, ballLX, ballTy, ballBy;
+    float ballHRx, ballHLx, ballHTy, ballHBy;
     
-    ballRX = ball.x + ball.radius;
-    ballLX = ball.x - ball.radius;
-    ballTy = ball.y - ball.radius;
-    ballBy = ball.y + ball.radius;
+    ballHRx = ball.x + ball.radius;
+    ballHLx = ball.x - ball.radius;
+    ballHTy = ball.y - ball.radius;
+    ballHBy = ball.y + ball.radius;
     
-    if (ballLX <= p1.x && ballLX <= p1.paddleFront && ballTy <= p1.y + p1.h/2 && ballBy <= p1.y + p1.h/2 
-    || ballRX >= p2.x && ballRX >= p2.paddleFront && ballTy >= p2.y + p2.h/2 && ballBy >= p2.y + p2.h/2) {
+    if (ballHLx <= p1.paddleFront && ballHTy >= p1.y && ballHBy <= p1.bottmY) {
+      ball.xSpeed = ball.xSpeed * -1;
+    }
+    
+    if (ballHRx <= p2.paddleFront && ball.y - ball.radius >= p2.y && ball.y + ball.radius <= p2.bottmY) {
       ball.xSpeed = ball.xSpeed * -1;
     } 
+      
+    
   }
   
   void scoreKeeper () {
@@ -61,15 +72,20 @@ class GameState {
     if (ball.x < 0 ) {
       p2.score = p2.score + 1;
       ball.xSpeed = 0;
-      ball.x = p1.x + 7;
-      ball.y = p1.y;
+      ball.x = p1.x + p1.w - 1 + ball.radius;
+      ball.y = p1.y + p1.h/2;
+      p1.player1 = true;
+      ballCaught = true;
     }
       
     if (ball.x > width) {
       p1.score = p1.score + 1; 
       ball.xSpeed = 0;
-      ball.x = p2.x - 7;
-      ball.y = p2.y;
+      ball.x = p2.x - p2.w- ball.radius;
+      ball.y = p2.y + p2.h/2;
+      p2.player2 = true;
+      ballCaught = true;
+      
     }
   }  
 }

@@ -32,7 +32,7 @@ void draw() {
   
   p1.drawPaddle();
   p1.movePaddle();
-  
+  //p1.shootBall();
   
   p2.drawPaddle();
   p2.movePaddle();

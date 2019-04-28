@@ -16,24 +16,8 @@ class Ball {
   }
   
   void ballMove () {
-     x = x + xSpeed;
+     x = x - xSpeed;
   }
-
-  //void ballReset() {
-  //  if (state.goal == false) {
-  //    drawBall();
-  //    xSpeed = 8;
-  //  }
-    
-  //  if (state.goal == true) {
-  //    xSpeed = 0;
-  //    state.drawReset();
-  //  }
-    
-  
-  //}
-
-
 }  
   
   
