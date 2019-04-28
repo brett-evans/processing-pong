@@ -1,11 +1,11 @@
 class GameState {
   boolean goal;
-  boolean ballCaught;  
+  boolean ballCaughtOnLeft, ballCaughtOnRight;  
   // drawing game board
   
   GameState () {
-    ballCaught = false;
-  
+    ballCaughtOnLeft = false;
+    ballCaughtOnRight = false;
   } 
   
   
@@ -72,20 +72,17 @@ class GameState {
     if (ball.x < 0 ) {
       p2.score = p2.score + 1;
       ball.xSpeed = 0;
-      ball.x = p1.x + p1.w - 1 + ball.radius;
+      ball.x = p1.x + ball.radius;
       ball.y = p1.y + p1.h/2;
-      p1.player1 = true;
-      ballCaught = true;
+      ballCaughtOnRight = true;
     }
       
     if (ball.x > width) {
       p1.score = p1.score + 1; 
       ball.xSpeed = 0;
-      ball.x = p2.x - p2.w- ball.radius;
+      ball.x = p2.x + p2.w - ball.radius;
       ball.y = p2.y + p2.h/2;
-      p2.player2 = true;
-      ballCaught = true;
-      
+      ballCaughtOnRight = true;
     }
   }  
 }

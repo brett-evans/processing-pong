@@ -24,15 +24,9 @@ void draw() {
   ball.drawBall();
   ball.ballMove();
   
-  
-  //if (state.goal == true) {
-  //  state.drawReset();
-  //  //ball.ballReset();
-  //}
-  
   p1.drawPaddle();
   p1.movePaddle();
-  //p1.shootBall();
+  p1.shootBall();
   
   p2.drawPaddle();
   p2.movePaddle();

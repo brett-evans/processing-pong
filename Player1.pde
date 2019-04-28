@@ -12,18 +12,18 @@ class Player {
     
     if (playerValue == 1) {
       player1 = true;
-      x = 25;
+      x = 20;
       
       paddleFront = w + x;  
     }
     if (playerValue == 2) {
       player2 = true;
-      x = 575;
+      x = 565;
       
       paddleFront = w - x;
     }
     
-    y = 200;
+    y = 165;
     ySpeed = 1;
     
     w = 15;
@@ -56,7 +56,7 @@ class Player {
       if (keyPressed) {
         if (key == 'w' || key == 'W') {
           y = y - ySpeed;
-          if (state.ballCaught == true && player1 == true){
+          if (state.ballCaughtOnLeft == true && player1 == true){
             ball.y = ball.y - ySpeed;
           }
         }
@@ -65,7 +65,7 @@ class Player {
       if (keyPressed) {
         if (key == 's' || key == 'S') {
           y = y + ySpeed;
-          if (state.ballCaught == true && player1 == true) {
+          if (state.ballCaughtOnLeft == true && player1 == true) {
             ball.y = ball.y + ySpeed;
           }
         }
@@ -77,14 +77,14 @@ class Player {
         if (key == CODED) {
           if (keyCode == UP) {
             y = y - ySpeed;
-            if (state.ballCaught == true && player1 == true) {
+            if (state.ballCaughtOnRight == true && player1 == true) {
               ball.y = ball.y - ySpeed;
             }  
           }
           
           if (keyCode == DOWN) {
             y = y + ySpeed;
-            if (state.ballCaught == true && player1 == true) {
+            if (state.ballCaughtOnRight == true && player1 == true) {
               ball.y = ball.y + ySpeed;
             }
           }
@@ -93,29 +93,22 @@ class Player {
     }
     
   }
-  //void shootBall () {
-  //  if (state.ballCaught == true && player1 == true) {
-  //    if (keyPressed) {
-  //      if (key == CODED) {
-  //        if (key == 'SPACE') {
-  //          ball.x = ball.x + ball.xSpeed;
-  //          state.ballCaught == false;
-  //        }
-  //      }
-  //    }    
-  //  }
-    
-  //  if (state.ballCaught == true && player2 == true) {
-  //    if (keyPressed) {
-  //      if (key == CODED) {
-  //        if (keyCode == ENTER) {
-  //          ball.x = ball.x - ball.xSpeed;
-  //          state.ballCaught == false;
-  //        }
-  //      }
-  //    }    
-  //  }
-  //}
+  
+  void shootBall () {
+    if (keyPressed) {
+      if (key == 'H' || key == 'h') {
+        if (state.ballCaughtOnLeft == true) {
+          ball.xSpeed = ball.xSpeed + 2;
+          state.ballCaughtOnLeft = false;;
+        }
+        
+        if (state.ballCaughtOnRight == true) {
+          ball.xSpeed = ball.xSpeed + 2;
+          state.ballCaughtOnRight = false;
+        }
+      }
+    }
+  }
 
 
 
