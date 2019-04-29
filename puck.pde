@@ -7,7 +7,7 @@ class Ball {
     y = 200;
     diameter = 25;
     radius = diameter/2;
-    xSpeed = 2;
+    xSpeed = 0.5;
   }
   
   void drawBall () {

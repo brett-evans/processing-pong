@@ -14,13 +14,13 @@ class Player {
       player1 = true;
       x = 20;
       
-      paddleFront = w + x;  
+      paddleFront = x + w + ball.radius;  
     }
     if (playerValue == 2) {
       player2 = true;
       x = 565;
       
-      paddleFront = w - x;
+      paddleFront = x + 2;
     }
     
     y = 165;

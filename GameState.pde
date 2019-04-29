@@ -60,7 +60,7 @@ class GameState {
       ball.xSpeed = ball.xSpeed * -1;
     }
     
-    if (ballHRx <= p2.paddleFront && ball.y - ball.radius >= p2.y && ball.y + ball.radius <= p2.bottmY) {
+    if (ballHRx >= p2.paddleFront && ball.y - ball.radius >= p2.y && ball.y + ball.radius <= p2.bottmY) {
       ball.xSpeed = ball.xSpeed * -1;
     } 
       
